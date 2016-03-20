@@ -8,7 +8,7 @@ $ git clone https://github.com/aurerua/goals-tracker.git
 ```
 2. Install the dependencies
 ```
-$ cd nedb-express-mvc && npm install
+$ cd goals-tracker && npm install
 ```
 
 ## Running the server
