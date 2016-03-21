@@ -22,8 +22,8 @@ var db = new Datastore({
 // Define a goal.
 var goal = {
   description: 'Do 10 minutes meditation every day',
-  successes: [],
-  failures: []
+  successes: [], // no success yet, we start with an empty list
+  failures: []   // no failure either, thus an empty list
 };
 
 // Save this goal to the database.
