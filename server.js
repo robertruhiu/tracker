@@ -76,7 +76,7 @@ app.delete('/goals/:id', function(req, res) {
     _id: goal_id
   }, {}, function(err, goal) {
     if (err) console.log(err);
-    res.redirect('/');
+    res.sendStatus(200);
   });
 });
 
@@ -86,18 +86,18 @@ app.get('/', function(req, res) {
   db.find({}).sort({
     updatedAt: -1
   }).exec(function(err, result) {
-    if (err) console.log(err)
+    if (err) console.log(err);
     var obj = {
       goals: result,
       helpers: {
         formatCreatedAt: function() {
-          return this.createdAt.toLocaleDateString()
+          return this.createdAt.toLocaleDateString();
         }
       }
-    }
-    res.render('index', obj)
-  })
-})
+    };
+    res.render('index', obj);
+  });
+});
 
 // START THE SERVER
 // ===============================================
