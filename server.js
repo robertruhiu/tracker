@@ -52,9 +52,9 @@ var db = new Datastore({
 app.get('/goals', function(req, res) {
   db.find({}).sort({
     updatedAt: -1
-  }).exec(function(err, result) {
-    if (err) console.log(err);
-    res.json(result);
+  }).exec(function(err, goals) {
+    if (err) res.send(err);
+    res.json(goals);
   });
 });
 
@@ -77,9 +77,9 @@ app.get('/goals/:id', function(req, res) {
   var goal_id = req.params.id;
   db.findOne({
     _id: goal_id
-  }, {}, function(err, result) {
+  }, {}, function(err, goal) {
     if (err) console.log(err);
-    res.json(result);
+    res.json(goal);
   });
 });
 
@@ -100,10 +100,10 @@ app.delete('/goals/:id', function(req, res) {
 app.get('/', function(req, res) {
   db.find({}).sort({
     updatedAt: -1
-  }).exec(function(err, result) {
+  }).exec(function(err, goals) {
     if (err) console.log(err);
     var obj = {
-      goals: result,
+      goals: goals,
       helpers: {
         formatCreatedAt: function() {
           return this.createdAt.toLocaleDateString();
