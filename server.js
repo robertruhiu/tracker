@@ -75,7 +75,7 @@ app.post('/goals', function(req, res) {
 // (Accessed at GET http://localhost:8080/goals/goal_id)
 app.get('/goals/:id', function(req, res) {
   var goal_id = req.params.id;
-  db.find({
+  db.findOne({
     _id: goal_id
   }, {}, function(err, result) {
     if (err) console.log(err);
