@@ -68,6 +68,19 @@ app.post('/goals', function(req, res) {
   });
 });
 
+
+// GET a goal.
+// (Accessed at GET http://localhost:8080/goals/goal_id)
+app.get('/goals/:id', function(req, res) {
+  var goal_id = req.params.id;
+  db.find({
+    _id: goal_id
+  }, {}, function(err, result) {
+    if (err) console.log(err);
+    res.json(result);
+  });
+});
+
 // DELETE a goal.
 // (Accessed at DELETE http://localhost:8080/goals/goal_id)
 app.delete('/goals/:id', function(req, res) {
