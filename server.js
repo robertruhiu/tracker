@@ -15,7 +15,9 @@ var express = require('express'),
 var   port = Number(process.env.PORT || 8080);
 
 // Set up body-parser.
+// To parse JSON:
 app.use(bodyParser.json());
+// To parse form data:
 app.use(bodyParser.urlencoded({
   extended: true
 }));
