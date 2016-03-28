@@ -65,8 +65,8 @@ app.post('/goals', function(req, res) {
     description: req.body.description,
   };
   db.insert(goal, function(err, goal) {
-    if (err) console.log(err);
-    res.redirect(201,'/');
+    if (err) res.send(err);
+    res.json(goal);
   });
 });
 
@@ -78,7 +78,7 @@ app.get('/goals/:id', function(req, res) {
   db.findOne({
     _id: goal_id
   }, {}, function(err, goal) {
-    if (err) console.log(err);
+    if (err) res.send(err);
     res.json(goal);
   });
 });
@@ -90,7 +90,7 @@ app.delete('/goals/:id', function(req, res) {
   db.remove({
     _id: goal_id
   }, {}, function(err, goal) {
-    if (err) console.log(err);
+    if (err) res.send(err);
     res.sendStatus(200);
   });
 });
@@ -101,7 +101,7 @@ app.get('/', function(req, res) {
   db.find({}).sort({
     updatedAt: -1
   }).exec(function(err, goals) {
-    if (err) console.log(err);
+    if (err) res.send(err);
     var obj = {
       goals: goals,
       helpers: {
