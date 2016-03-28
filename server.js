@@ -66,7 +66,11 @@ app.post('/goals', function(req, res) {
   };
   db.insert(goal, function(err, goal) {
     if (err) res.send(err);
-    res.json(goal);
+   // to use this route directly for the view 
+    // until cleaner solution is implemented 
+    // redirect instead of res.json 
+    // res.json(goal);
+    res.redirect('/');
   });
 });
 
