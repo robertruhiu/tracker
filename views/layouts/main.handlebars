@@ -42,12 +42,13 @@
         domReady(function() {
             var deleteButtons = u('.delete');
             deleteButtons.each(function(currentValue) {
-                var id = currentValue.closest('li').id;
+                var li = currentValue.closest('li');
+                var id = li.id;
                 currentValue.addEventListener('click', function() {
                     fetch('goals/' + id, {
                         method: 'delete'
                     }).then(function(responseObj) {
-                        window.location.reload();
+                        li.remove();
                     });
                 });
             });
