@@ -12,7 +12,7 @@ var express = require('express'),
 // ===============================================
 
 // Set the port number.
-var   port = Number(process.env.PORT || 8080);
+var   port = Number(process.env.PORT || 3000);
 
 // Set up body-parser.
 // To parse JSON:
